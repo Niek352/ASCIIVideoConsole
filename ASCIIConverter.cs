@@ -4,6 +4,8 @@ namespace ASCIIVideoConsole;
 
 public class ASCIIConverter
 {
+	private readonly int _height;
+	private readonly int _width;
 	private const string BLACK = "@";
 	private const string CHARCOAL = "#";
 	private const string DARKGRAY = "8";
@@ -13,9 +15,16 @@ public class ASCIIConverter
 	private const string SLATEGRAY = "*";
 	private const string LIGHTGRAY = ".";
 	private const string WHITE = " ";
+	
+	public ASCIIConverter(int height, int width)
+	{
+		_height = height;
+		_width = width;
+	}
+	
 	public void DrawBitmap(Bitmap bitmap)
 	{
-		bitmap = GrayScaleFilter (new Bitmap(bitmap, 400, 180)) ;
+		bitmap = GrayScaleFilter (new Bitmap(bitmap, _width, _height)) ;
 		var width = bitmap.Width;
 		var height = bitmap.Height;
 		Console.SetCursorPosition(0,0);
@@ -29,7 +38,6 @@ public class ASCIIConverter
 			}
 			FastConsole.Write("\n");
 		}
-		
 		FastConsole.Flush();
 		Thread.Sleep(5);
 	}
@@ -39,14 +47,14 @@ public class ASCIIConverter
 		Bitmap grayScale = new Bitmap(image.Width, image.Height);
 
 		for (Int32 y = 0; y < grayScale.Height; y++)
-		for (Int32 x = 0; x < grayScale.Width; x++)
-		{
-			Color c = image.GetPixel(x, y);
+			for (Int32 x = 0; x < grayScale.Width; x++)
+			{
+				Color c = image.GetPixel(x, y);
 
-			Int32 gs = (Int32)(c.R * 0.3 + c.G * 0.59 + c.B * 0.11);
+				Int32 gs = (Int32)(c.R * 0.3f + c.G * 0.59f + c.B * 0.11f);
 
-			grayScale.SetPixel(x, y, Color.FromArgb(gs, gs, gs));
-		}
+				grayScale.SetPixel(x, y, Color.FromArgb(gs, gs, gs));
+			}
 		return grayScale;
 	}
 	
