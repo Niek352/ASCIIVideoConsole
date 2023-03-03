@@ -7,14 +7,14 @@ public class ASCIIConverter
 	private readonly int _height;
 	private readonly int _width;
 	private const string BLACK = "@";
-	private const string CHARCOAL = "#";
-	private const string DARKGRAY = "8";
-	private const string MEDIUMGRAY = "&";
+	private const string CHARCOAL = ".";
+	private const string DARKGRAY = "*";
+	private const string MEDIUMGRAY = ":";
 	private const string MEDIUM = "o";
-	private const string GRAY = ":";
-	private const string SLATEGRAY = "*";
-	private const string LIGHTGRAY = ".";
-	private const string WHITE = " ";
+	private const string GRAY = "&";
+	private const string SLATEGRAY = "8";
+	private const string LIGHTGRAY = "#";
+	private const string WHITE = "@";
 	
 	public ASCIIConverter(int height, int width)
 	{

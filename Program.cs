@@ -7,7 +7,7 @@ using MediaFileProcessor.Processors;
 
 var pathToFile = Console.ReadLine().Replace('"', ' ').Trim();
 Console.WriteLine(pathToFile);
-var asci = new ASCIIConverter(40, 40);
+var asci = new ASCIIConverter(180, 300);
 var videoProcessor = new VideoFileProcessor();
 
 await using var stream = new FileStream(pathToFile, FileMode.Open);
